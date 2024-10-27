@@ -40,5 +40,3 @@ world_gii <- left_join(world, gii_2, by = c("iso" = "iso3")) %>%
   distinct(., .keep_all = TRUE)
 summary(world_gii)
 
-#plotting qtm
-qtm(world_gii, fill = "gii_diff", midpoint = NA)

@@ -40,3 +40,21 @@ world_gii <- left_join(world, gii_2, by = c("iso" = "iso3")) %>%
   distinct(., .keep_all = TRUE)
 summary(world_gii)
 
+# Mapping the GII difference
+tm_shape(world_gii) +
+  tm_polygons("gii_diff", title = "GII Difference (2010-2019)", 
+              palette = "-RdYlBu", 
+              style = "quantile", 
+              textNA = "No data") +
+  tm_layout(main.title = "Global Gender Inequality Index Difference (2010-2019)",
+            legend.outside = TRUE)
+
+#Whole spectrum of colour pallete
+tm_shape(world_gii) +
+  tm_polygons("gii_diff", title = "GII Difference (2010-2019)", 
+              palette = "-RdYlBu", 
+              style = "quantile", 
+              textNA = "No data", 
+              midpoint = NA) +  # Setting midpoint to NA
+  tm_layout(main.title = "Global Gender Inequality Index Difference (2010-2019)",
+            legend.outside = TRUE)
